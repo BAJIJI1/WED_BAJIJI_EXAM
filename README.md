@@ -1,8 +1,9 @@
 # WED_BAJIJI_EXAM
 
-# **PHASE II**
+# **PHASE II:Business Process Modeling (Related to Management Information Systems - MIS).**
 
-### **1. Define the Scope**
+
+## **1. Define the Scope**
 
 ### **🔍 Business Process Being Modeled:**
 
@@ -47,7 +48,7 @@ This process ensures that patient information (appointments, medical records, di
 **Admin	System manager:**	                              Manages access control and data quality
 
 
-## **3 & 4. UML/BPMN Diagram with Swimlanes**
+## **3, 4 & 5. UML/BPMN Diagram with Swimlanes**
 
 ## **6. Explanation of the BPMN Diagram**
 
