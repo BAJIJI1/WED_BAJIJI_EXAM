@@ -1,6 +1,6 @@
 # WED_BAJIJI_EXAM
 
-# **PHASE II:Business Process Modeling (Related to Management Information Systems - MIS).**
+# 📋 **PHASE II:Business Process Modeling (Related to Management Information Systems - MIS).**
 
 
 ## **1. Define the Scope**
@@ -52,7 +52,7 @@ This process ensures that patient information (appointments, medical records, di
 
 ## **6. Explanation of the BPMN Diagram**
 
-### **🧩 Main Components & Interactions:**
+## **🧩 Main Components & Interactions:**
 
 
 **•	Patient:** Initiates the process by providing personal and medical information.
@@ -67,7 +67,7 @@ This process ensures that patient information (appointments, medical records, di
 
 
 
-### **🧠 How the Process Supports MIS Functions**
+## **🧠 How the Process Supports MIS Functions**
 
 **•	Decision-Making:** Doctors have immediate access to patient history, improving diagnostic accuracy.
 
@@ -78,7 +78,7 @@ This process ensures that patient information (appointments, medical records, di
 **•	Monitoring & Evaluation:** Admins can review system logs and performance indicators.
 
 _
-### **🏥 Importance for Organizational Efficiency**
+## **🏥 Importance for Organizational Efficiency**
 
 **•**	Reduces administrative burden on staff.
 
