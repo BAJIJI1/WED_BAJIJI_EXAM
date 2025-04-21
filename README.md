@@ -3,7 +3,7 @@
 # 📋 **PHASE II:Business Process Modeling (Related to Management Information Systems - MIS).**
 
 
-## **1. Define the Scope**
+## **🎲1. Define the Scope**
 
 ### **🔍 Business Process Being Modeled:**
 
@@ -31,7 +31,7 @@ This process ensures that patient information (appointments, medical records, di
 
 **•**	Enhanced collaboration across departments.
 
-## **2. Identify Key Entities**
+## **🎲2. Identify Key Entities**
 
 ### **Entity:**	                                      **Description	Role**
 
@@ -48,9 +48,12 @@ This process ensures that patient information (appointments, medical records, di
 **Admin	System manager:**	                              Manages access control and data quality
 
 
-## **3, 4 & 5. UML/BPMN Diagram with Swimlanes**
+## **🎲3, 4 & 5. UML/BPMN Diagram with Swimlanes**
 
-## **6. Explanation of the BPMN Diagram**
+<img width="383" alt="BPMN DIAGRAM" src="https://github.com/user-attachments/assets/280cc679-a0fe-4759-b41f-5773920d828f" />
+
+
+## **🎲6. Explanation of the BPMN Diagram**
 
 ## **🧩 Main Components & Interactions:**
 
@@ -87,5 +90,8 @@ _
 **•**	Speeds up patient handling and reporting.
 
 **•**	Ensures traceability and accountability across all stages of the patient care process.
+
+
+
 
 
