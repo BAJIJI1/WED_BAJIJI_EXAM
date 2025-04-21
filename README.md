@@ -34,16 +34,19 @@ This process ensures that patient information (appointments, medical records, di
 
 ### **Entity:**	                                      **Description	Role**
 
-**Patient**                                            Individual receiving care	Requests appointments, provides personal/medical info
+**Patient:**                                            Individual receiving care	Requests appointments, provides personal/medical info
 
-**Receptionist**	                                      Front desk staff	Manages appointments, updates patient details
+**Receptionist:**	                                      Front desk staff	Manages appointments, updates patient details
 
-**Doctor**	                                            Medical staff	Reviews patient records, adds diagnoses and prescriptions
+**Doctor:**	                                            Medical staff	Reviews patient records, adds diagnoses and prescriptions
 
-**MIS Database**	                                      Central data store	Stores all patient records, appointments, diagnosis
+**MIS Database:**	                                      Central data store	Stores all patient records, appointments, diagnosis
 
-System (App)	                                      User interface	Allows staff and patients to interact with the system
+**System (App):**	                                      User interface	Allows staff and patients to interact with the system
 
-Admin	System manager	                              Manages access control and data quality
+**Admin	System manager:**	                              Manages access control and data quality
+
+
+## **3 & 4. UML/BPMN Diagram with Swimlanes**
 
 
