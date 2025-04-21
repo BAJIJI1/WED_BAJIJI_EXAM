@@ -15,13 +15,18 @@ This process ensures that patient information (appointments, medical records, di
 ## **🎯Objectives:**
 
 **•**	Automate patient appointment scheduling.
+
 **•**	Store and manage complete patient records.
+
 **•**	Ensure availability of accurate information for doctors and administrative staff.
+
 **•**	Support data-driven decisions in treatment and operations.
 
 ### **✅ Expected Outcomes:**
 
 **•**	Reduced waiting time.
+
 **•**	Improved diagnosis through historical data.
+
 **•**	Enhanced collaboration across departments.
 
