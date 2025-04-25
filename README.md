@@ -92,6 +92,28 @@ _
 **•**	Ensures traceability and accountability across all stages of the patient care process.
 
 
+# 🏥 Patient Management System – Phase 3: Logical Model Design
+
+ 💡 Welcome to Phase 3 of our Oracle PL/SQL Database Project! 🎯  
+In this phase, we focused on building a **Logical Data Model** aligned with our business process from Phase 2 and problem statement in Phase 1.
+
+## 🧠 Phase Objectives
+
+✔️ Identify and define all entities and their attributes  
+✔️ Set up relationships using **primary** and **foreign keys**  
+✔️ Apply database constraints (NOT NULL, UNIQUE, CHECK, DEFAULT)  
+✔️ Normalize the model to **Third Normal Form (3NF)**  
+✔️ Ensure data integrity and support real-world scenarios  
+
+## 🧱 Key Entities in the System
+
+- `Patients` 🧑‍⚕️  
+- `Doctors` 🥼  
+- `Appointments` 📆  
+- `MedicalRecords` 🗂️  
+- `Departments` 🏥  
+- `Users` (for login and access control) 🔐  
+
 
 
 
