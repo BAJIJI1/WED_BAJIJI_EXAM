@@ -107,13 +107,78 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 
 ## 🧱 Key Entities in the System
 
-- `Patients` 🧑‍⚕️  
+- `Patients` 🧑‍⚕  
 - `Doctors` 🥼  
 - `Appointments` 📆  
 - `MedicalRecords` 🗂️  
 - `Departments` 🏥  
-- `Users` (for login and access control) 🔐  
+- `Users` (for login and access control) 🔐
 
 
+## 1. Entity-Relationship (ER) Model
 
+### **Patient**
+
+| **Attribute**   | **Data Type**   | **Description**                   |
+|-----------------|-----------------|-----------------------------------|
+| patient_id (PK) | NUMBER          | Unique ID for each patient        |
+| full_name       | VARCHAR2(100)   | Patient’s full name               |
+| email           | VARCHAR2(100)   | Email address (must be unique)    |
+| phone           | VARCHAR2(15)    | Phone number                      |
+| age             | NUMBER          | Age of the patient                |
+| gender          | VARCHAR2(10)    | Gender of the patient             |
+
+
+### **Doctor**
+
+| **Attribute**   | **Data Type**   | **Description**            |
+|-----------------|-----------------|----------------------------|
+| doctor_id (PK)  | NUMBER          | Unique ID for each doctor  |
+| full_name       | VARCHAR2(100)   | Doctor's full name         |
+| specialization  | VARCHAR2(50)    | Area of specialization     |
+| phone           | VARCHAR2(15)    | Contact number             |
+| email           | VARCHAR2(100)   | Email address              |
+
+
+### **Appointment**
+
+| **Attribute**      | **Data Type**   | **Description**                      |
+|--------------------|-----------------|--------------------------------------|
+| appointment_id (PK)| NUMBER          | Unique ID for each appointment       |
+| patient_id (FK)    | NUMBER          | Linked to Patient                    |
+| doctor_id (FK)     | NUMBER          | Linked to Doctor                     |
+| appointment_date   | DATE            | Date of the appointment              |
+| status             | VARCHAR2(20)    | Scheduled / Completed / Canceled     |
+
+
+### **Examination**
+
+| **Attribute**       | **Data Type**      | **Description**               |
+|---------------------|--------------------|-------------------------------|
+| exam_id (PK)        | NUMBER             | Unique exam ID                |
+| appointment_id (FK) | NUMBER             | Links to Appointment          |
+| symptoms            | VARCHAR2(255)      | Patient-reported symptoms     |
+| diagnosis           | VARCHAR2(255)      | Doctor's diagnosis            |
+| prescribed_meds     | VARCHAR2(255)      | Medicines prescribed          |
+
+
+### **Receptionist**
+
+|  **Attribute**      | **Data Type**   |  **Description**           |
+|---------------------|-----------------|----------------------------|
+| receptionist_id (PK)| NUMBER          | Unique ID for receptionist |
+| full_name           | VARCHAR2(100)   | Receptionist name          |
+| email               | VARCHAR2(100)   | Email address              |
+| phone               | VARCHAR2(15)    | Phone number               |
+
+
+### **UserAccount (Optional – for Login Roles)**
+
+| **Attribute**    |**Data Type**    | **Description**                       |
+|------------------|-----------------|---------------------------------------|
+| user_id (PK)     | NUMBER          | Unique ID                             |
+| username         | VARCHAR2(50)    | Login username                        |
+| password         | VARCHAR2(100)   | Encrypted password                    |
+| role             | VARCHAR2(20)    | Patient, Doctor, Receptionist         |
+| reference_id (FK)| NUMBER          | Links to respective entity ID         |
 
