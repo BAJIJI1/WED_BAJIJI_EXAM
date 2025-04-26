@@ -1,6 +1,6 @@
 # WED_BAJIJI_EXAM
 
-# **🏥 Patient Management System - Phase 3:Business Process Modeling (Related to Management Information Systems - MIS).**
+# **🏥 Patient Management System - Phase 3:Business Process Modeling (Related to MIS).**
 
 
 ## **🎲1. Define the Scope**
@@ -103,7 +103,7 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 
 ## 🧱 Key Entities in the System
 
-- `Patients` 🧑‍⚕  
+- `Patients` 🧑‍ 
 - `Doctors` 🥼  
 - `Appointments` 📆  
 - `MedicalRecords` 🗂️  
@@ -125,7 +125,7 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 | gender          | VARCHAR2(10)    | Gender of the patient             |
 
 
-### **Doctor**
+### **🩺Doctor**
 
 | **Attribute**   | **Data Type**   | **Description**            |
 |-----------------|-----------------|----------------------------|
@@ -136,7 +136,7 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 | email           | VARCHAR2(100)   | Email address              |
 
 
-### **Appointment**
+### **📅Appointment**
 
 | **Attribute**      | **Data Type**   | **Description**                      |
 |--------------------|-----------------|--------------------------------------|
@@ -147,7 +147,7 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 | status             | VARCHAR2(20)    | Scheduled / Completed / Canceled     |
 
 
-### **Examination**
+### **📝Examination**
 
 | **Attribute**       | **Data Type**      | **Description**               |
 |---------------------|--------------------|-------------------------------|
@@ -158,7 +158,7 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 | prescribed_meds     | VARCHAR2(255)      | Medicines prescribed          |
 
 
-### **Receptionist**
+### **💁‍♀️ / 💁‍♂️Receptionist**
 
 |  **Attribute**      | **Data Type**   |  **Description**           |
 |---------------------|-----------------|----------------------------|
@@ -168,7 +168,7 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 | phone               | VARCHAR2(15)    | Phone number               |
 
 
-### **UserAccount (Optional – for Login Roles)**
+### **🔐UserAccount (Optional – for Login Roles)**
 
 | **Attribute**    |**Data Type**    | **Description**                       |
 |------------------|-----------------|---------------------------------------|
@@ -179,7 +179,7 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 | reference_id (FK)| NUMBER          | Links to respective entity ID         |
 
 
-## **2. Relationships & Constraints**
+## **🔗2. Relationships & Constraints**
      
 | **Relationship Description**              | **Type**| **Constraints**                            |
 |-------------------------------------------|---------|--------------------------------------------|
@@ -199,7 +199,7 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 **✅- CHECK:** gender IN ('Male','Female','Other'), status IN ('Scheduled', 'Completed', 'Canceled')
 
 
-## **3. Normalization**
+## **📊3. Normalization**
 
 - 🧱 1NF: All attributes are atomic.
 - 🎯 2NF: No partial dependencies.
@@ -208,7 +208,7 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 
   ## **🔁 Normalization Summary**
 
-All tables have been normalized to **3NF** to:
+✔️ All tables have been normalized to **3NF** to:
 
 **-** Reduce redundancy 🔄
 
