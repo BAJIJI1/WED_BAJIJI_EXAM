@@ -208,15 +208,22 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
   ## **🔁 Normalization Summary**
 
 All tables have been normalized to **3NF** to:
+
 **-** Reduce redundancy 🔄
+
 **-** Maintain data integrity 🧩
+
 **-** Support scalable and efficient querying ⚡
+
 
 ## **4. Handling Real-World Scenarios**
 
 **-** A patient registering but not booking an appointment yet.
+
 **-** Doctors handling multiple patients.
+
 **-** Canceling appointments without losing patient data.
+
 **-** Logging all diagnosis & prescriptions per appointment.
 
 
