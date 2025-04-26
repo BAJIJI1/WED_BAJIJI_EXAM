@@ -1,6 +1,6 @@
 # WED_BAJIJI_EXAM
 
-# **🏥 Patient Management System - Phase 3:Business Process Modeling (Related to MIS).**
+# **🏥 Patient Management System - Phase 2:Business Process Modeling (Related to MIS).**
 
 
 ## **🎲1. Define the Scope**
