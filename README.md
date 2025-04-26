@@ -228,6 +228,11 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 
 **-** Logging all diagnosis & prescriptions per appointment.
 
+## 📊 ER Diagram Preview
+
+
+# **🏥 Patient Management System - Phase 4: Database (Pluggable Database) Creation and Naming.**
+
 
 
 
