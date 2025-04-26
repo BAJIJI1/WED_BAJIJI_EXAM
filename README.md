@@ -1,6 +1,6 @@
 # WED_BAJIJI_EXAM
 
-# 📋 **PHASE II:Business Process Modeling (Related to Management Information Systems - MIS).**
+# **🏥 Patient Management System - Phase 3:Business Process Modeling (Related to Management Information Systems - MIS).**
 
 
 ## **🎲1. Define the Scope**
@@ -192,18 +192,19 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 
 ## **Constraints Examples:**
 
-**- NOT NULL:** Required fields like patient_id, full_name
+**🚫- NOT NULL:** Required fields like patient_id, full_name
 
-**- UNIQUE:** email, username
+**🔑- UNIQUE:** email, username
 
-**- CHECK:** gender IN ('Male','Female','Other'), status IN ('Scheduled', 'Completed', 'Canceled')
+**✅- CHECK:** gender IN ('Male','Female','Other'), status IN ('Scheduled', 'Completed', 'Canceled')
 
 
 ## **3. Normalization**
 
-- 1NF: All attributes are atomic.
-- 2NF: No partial dependencies.
-- 3NF: No transitive dependencies.
+- 🧱 1NF: All attributes are atomic.
+- 🎯 2NF: No partial dependencies.
+- 🔗 3NF: No transitive dependencies.
+
 
   ## **🔁 Normalization Summary**
 
@@ -216,7 +217,7 @@ All tables have been normalized to **3NF** to:
 **-** Support scalable and efficient querying ⚡
 
 
-## **4. Handling Real-World Scenarios**
+## **🌍4. Handling Real-World Scenarios**
 
 **-** A patient registering but not booking an appointment yet.
 
