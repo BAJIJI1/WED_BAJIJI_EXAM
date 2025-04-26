@@ -230,6 +230,8 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 
 ## 📊 ER Diagram Preview
 
+![ER diagram](https://github.com/user-attachments/assets/7359b0ad-e5f1-4ebf-a365-e21e0b93facd)
+
 
 # **🏥 Patient Management System - Phase 4: Database (Pluggable Database) Creation and Naming.**
 
