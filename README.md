@@ -77,21 +77,22 @@ This process ensures that patient information (appointments, medical records, di
 **•	Monitoring & Evaluation:** Admins can review system logs and performance indicators.
 
 _
-## **🏥 Importance for Organizational Efficiency**
+## **⚙️📈Importance for Organizational Efficiency**
+ 
 
-**•**	Reduces administrative burden on staff.
+**•** 💼	Reduces administrative burden on staff.
 
-**•**	Eliminates double-entry errors.
+**•**	🚫Eliminates double-entry errors.
 
-**•**	Speeds up patient handling and reporting.
+**•**	🚀Speeds up patient handling and reporting.
 
-**•**	Ensures traceability and accountability across all stages of the patient care process.
+**•**	🛡️Ensures traceability and accountability across all stages of the patient care process.
 
 
-# 🏥 Patient Management System – Phase 3: Logical Model Design
+# **🏥 Patient Management System – Phase 3: Logical Model Design**
 
- 💡 Welcome to Phase 3 of our Oracle PL/SQL Database Project! 🎯  
-In this phase, we focused on building a **Logical Data Model** aligned with our business process from Phase 2 and problem statement in Phase 1.
+ **💡** Welcome to Phase 3 of our Oracle PL/SQL Database Project! 🎯  
+In this phase, we focused on building a **Logical Data Model** aligned with our business process from **Phase 2** and problem statement in **Phase 1**.
 
 ## 🧠 Phase Objectives
 
@@ -103,12 +104,12 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 
 ## 🧱 Key Entities in the System
 
-- `Patients` 🧑‍ 
-- `Doctors` 🥼  
-- `Appointments` 📆  
-- `MedicalRecords` 🗂️  
-- `Departments` 🏥  
-- `Users` (for login and access control) 🔐
+**-** 🧑‍ Patients 
+**-** 🥼 Doctors   
+**-**  📆 Appointments  
+**-** 🗂️ MedicalRecords   
+**-**  🏥 Departments
+**-** 🔐 Users` (for login and access control) 
 
 
 ## **1. Entity-Relationship (ER) Model**
