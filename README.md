@@ -115,7 +115,7 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 - `Users` (for login and access control) 🔐
 
 
-## 1. Entity-Relationship (ER) Model
+## **1. Entity-Relationship (ER) Model**
 
 ### **Patient**
 
@@ -181,4 +181,46 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 | password         | VARCHAR2(100)   | Encrypted password                    |
 | role             | VARCHAR2(20)    | Patient, Doctor, Receptionist         |
 | reference_id (FK)| NUMBER          | Links to respective entity ID         |
+
+
+## **2. Relationships & Constraints**
+     
+| **Relationship Description**              | **Type**| **Constraints**                            |
+|-------------------------------------------|---------|--------------------------------------------|
+| One patient can have many appointments    | 1:M     | patient_id in Appointment is a FK, NOT NULL|
+| One doctor can handle many appointments   | 1:M     | doctor_id in Appointment is a FK, NOT NULL |
+| One appointment results in one examination| 1:1     | appointment_id is UNIQUE in Examination    |
+| Receptionist is optional                  | N/A     | For admin actions only                     |
+| UserAccount links to entity               | 1:1     | Enforced via reference_id & role combo     |
+
+
+## **Constraints Examples:**
+
+**- NOT NULL:** Required fields like patient_id, full_name
+**- UNIQUE:** email, username
+**- CHECK:** gender IN ('Male','Female','Other'), status IN ('Scheduled', 'Completed', 'Canceled')
+
+## **3. Normalization**
+
+- 1NF: All attributes are atomic.
+- 2NF: No partial dependencies.
+- 3NF: No transitive dependencies.
+
+  ## **🔁 Normalization Summary**
+
+All tables have been normalized to **3NF** to:
+**-** Reduce redundancy 🔄
+**-** Maintain data integrity 🧩
+**-** Support scalable and efficient querying ⚡
+
+## **4. Handling Real-World Scenarios**
+
+**-** A patient registering but not booking an appointment yet.
+**-** Doctors handling multiple patients.
+**-** Canceling appointments without losing patient data.
+**-** Logging all diagnosis & prescriptions per appointment.
+
+
+
+
 
