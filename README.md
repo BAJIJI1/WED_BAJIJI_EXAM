@@ -29,23 +29,19 @@ This process ensures that patient information (appointments, medical records, di
 
 **•**	Improved diagnosis through historical data.
 
-**•**	Enhanced collaboration across departments.
+**•**	Enhanced collaboration across departments.\
+
 
 ## **🎲2. Identify Key Entities**
 
-### **Entity:**	                                      **Description	Role**
-
-**Patient:**                                            Individual receiving care	Requests appointments, provides personal/medical info
-
-**Receptionist:**	                                      Front desk staff	Manages appointments, updates patient details
-
-**Doctor:**	                                            Medical staff	Reviews patient records, adds diagnoses and prescriptions
-
-**MIS Database:**	                                      Central data store	Stores all patient records, appointments, diagnosis
-
-**System (App):**	                                      User interface	Allows staff and patients to interact with the system
-
-**Admin	System manager:**	                              Manages access control and data quality
+| **Entity**               |**Description**                               | **Role**                                                  |
+|--------------------------|----------------------------------------------|-----------------------------------------------------------|
+| **Patient**              | Individual receiving care                    | Requests appointments, provides personal/medical info     |
+| **Receptionist**         | Front desk staff                             | Manages appointments, updates patient details             |
+| **Doctor**               | Medical staff                                | Reviews patient records, adds diagnoses and prescriptions |
+| **MIS Database**         | Central data store                           | Stores all patient records, appointments, diagnosis       |
+| **System (App)**         | User interface                               | Allows staff and patients to interact with the system     |
+| **Admin System Manager** | System manager                               | Manages access control and data quality                   |
 
 
 ## **🎲3, 4 & 5. UML/BPMN Diagram with Swimlanes**
@@ -197,8 +193,11 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 ## **Constraints Examples:**
 
 **- NOT NULL:** Required fields like patient_id, full_name
+
 **- UNIQUE:** email, username
+
 **- CHECK:** gender IN ('Male','Female','Other'), status IN ('Scheduled', 'Completed', 'Canceled')
+
 
 ## **3. Normalization**
 
