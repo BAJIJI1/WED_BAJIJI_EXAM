@@ -2,6 +2,11 @@
 
 # **🏥 Patient Management System - Phase 2:Business Process Modeling (Related to MIS).**
 
+## Introduction
+
+In this phase, I translated our business processes into a structured data model, ensuring data integrity, eliminating redundancy, and supporting real-world scenarios in patient management.
+
+We have the key entities, their attributes, relationships, and the normalization steps taken to achieve an efficient and reliable database design.
 
 ## **🎲1. Define the Scope**
 
