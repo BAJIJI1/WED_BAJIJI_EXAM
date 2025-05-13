@@ -235,72 +235,298 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 
 ## 📊 ER Diagram Preview
 
-![ER diagram](https://github.com/user-attachments/assets/7359b0ad-e5f1-4ebf-a365-e21e0b93facd)
+**![ER diagram](https://github.com/user-attachments/assets/7359b0ad-e5f1-4ebf-a365-e21e0b93facd)**
 
 
 # **🏥 Patient Management System - Phase 4: Database (Pluggable Database) Creation and Naming.**
 
+## **📘INTRODUCTION**
+
+**.** This phase focuses on the initial setup of the Oracle PL/SQL environment by creating a dedicated pluggable database tailored to the project. It involves naming the database using a standardized format, assigning administrative privileges, and securing it with proper credentials. To ensure effective oversight, Oracle Enterprise Manager (OEM) is configured to monitor database activities, providing insights into performance and resource usage throughout the development process.
+
+## SCREENSHOT OF CREATING PDB
+
+**![PDB CREATION](https://github.com/user-attachments/assets/2ba5db50-411d-42d5-8b2d-329f903d8f17)**
+
+## SCREENSHOT OF OEM CREATION
+
+**![OEM CREATION](https://github.com/user-attachments/assets/ad8e476b-1047-4775-ba07-40714581a35d)**
 
 
 # **🏥 Patient Management System -📦 Phase 5: Table Implementation and Data Insertion – Patient Management System**
-📘 Phase Overview
-This phase focuses on translating the logical data model into a physical Oracle database implementation. It ensures the reliability, accuracy, and structural integrity of data to support all operations and queries defined in the system’s objectives.
+
+## **📘 Phase Overview**
+
+**.** This phase focuses on translating the logical data model into a physical Oracle database implementation. It ensures the reliability, accuracy, and structural integrity of data to support all operations and queries defined in the system’s objectives.
 
 # **✅ Tasks and Deliverables**
-## 1. 🧱 Table Creation
-The logical design has been implemented by creating all necessary tables in Oracle SQL.
 
-Tables align with the system's core entities such as:
+# 1. 🧱 TABLE CREATION 
 
-Patient
+## QUERY TO CREATE  PATIENT TABLE
 
-Doctor
+```sql
+-- PATIENT table
+CREATE TABLE Patient (
+    patient_id NUMBER PRIMARY KEY,
+    full_name VARCHAR2(100) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    contact_info VARCHAR2(100),
+    medical_history CLOB
+);
+```
+## **📥 DATA INSERTION IN PATIENT TABLE**
 
-Appointment
+```sql
+-- Insert Patients
+INSERT INTO Patient VALUES (101, 'Alice Mukamana', TO_DATE('1990-05-21', 'YYYY-MM-DD'), '0788123456', 'Allergic to penicillin');
+INSERT INTO Patient VALUES (102, 'John Bizimana', TO_DATE('1985-11-12', 'YYYY-MM-DD'), '0788567890', NULL);
+```
+## **🎞TABLE PATIENT SCREENSHOT**
 
-Medical_Record
+**![Patient Table](https://github.com/user-attachments/assets/b3f39c86-838e-48a9-b50f-f0ae51dc5701)**
 
-Prescription
+## QUERY TO CREATE  DOCTOR TABLE
 
-Billing
+```sql
+-- DOCTOR table
+CREATE TABLE Doctor (
+    doctor_id NUMBER PRIMARY KEY,
+    full_name VARCHAR2(100) NOT NULL,
+    specialty VARCHAR2(50),
+    contact_info VARCHAR2(100),
+    availability VARCHAR2(50)
+);
+```
 
-Department
+## **📥DATA INSERTION IN DOCTOR TABLE**
 
-Each table is structured with appropriate column names and data types (e.g., VARCHAR2, NUMBER, DATE, CLOB).
+```sql
+-- Insert Doctors
+INSERT INTO Doctor VALUES (201, 'Dr. Emmanuel Ndayisaba', 'Cardiology', '0788987654', 'Mon-Fri');
+INSERT INTO Doctor VALUES (202, 'Dr. Grace Uwase', 'Pediatrics', '0788456123', 'Tue-Sat');
+```
+## **🎞TABLE DOCTOR SCREENSHOT**
 
-## 2. 📥 Data Insertion
-Realistic and meaningful sample data was inserted to simulate hospital operations.
+**![Doctor Table](https://github.com/user-attachments/assets/b5916f8d-0a59-4d03-9566-cfa9ac90e53a)**
+
+## QUERY TO CREATE DEPARTMENT TABLE
+
+```sql
+-- DEPARTMENT table
+CREATE TABLE Department (
+    department_id NUMBER PRIMARY KEY,
+    name VARCHAR2(100) UNIQUE NOT NULL
+);
+```
+
+## **📥DATA INSERTION IN DEPARTMENT TABLE**
+
+```sql
+-- Insert Departments
+INSERT INTO Department VALUES (1, 'Cardiology');
+INSERT INTO Department VALUES (2, 'Pediatrics');
+```
+
+## **🎞TABLE APPOINTMENT SCREENSHOT**
+
+**![Appointment Table](https://github.com/user-attachments/assets/a8c010c8-e0a4-414c-b665-3ce4f3fededf)**
+
+
+## QUERY TO CREATE DEPARTMENT TABLE
+
+```sql
+-- APPOINTMENT table
+CREATE TABLE Appointment (
+    appointment_id NUMBER PRIMARY KEY,
+    patient_id NUMBER REFERENCES Patient(patient_id),
+    doctor_id NUMBER REFERENCES Doctor(doctor_id),
+    appointment_date DATE NOT NULL,
+    appointment_time VARCHAR2(10) NOT NULL,
+    status VARCHAR2(20) CHECK (status IN ('Scheduled', 'Completed', 'Cancelled'))
+);
+```
+## **📥 DATA INSERTION IN APPOINTMENT TABLE**
+
+```sql
+-- Insert Appointments
+INSERT INTO Appointment VALUES (301, 101, 201, TO_DATE('2025-05-15', 'YYYY-MM-DD'), '10:00 AM', 'Scheduled');
+INSERT INTO Appointment VALUES (302, 102, 202, TO_DATE('2025-05-16', 'YYYY-MM-DD'), '02:00 PM', 'Completed');
+```
+## **🎞TABLE APPOINTMENT SCREENSHOT**
+
+**![Appointment Table](https://github.com/user-attachments/assets/b4b4dc5e-6a1b-4410-8eca-30adc3fc7f6b)**
+
+```sql
+-- APPOINTMENT table
+CREATE TABLE Appointment (
+    appointment_id NUMBER PRIMARY KEY,
+    patient_id NUMBER REFERENCES Patient(patient_id),
+    doctor_id NUMBER REFERENCES Doctor(doctor_id),
+    appointment_date DATE NOT NULL,
+    appointment_time VARCHAR2(10) NOT NULL,
+    status VARCHAR2(20) CHECK (status IN ('Scheduled', 'Completed', 'Cancelled'))
+);
+```
+## QUERY TO CREATE  MEDICAL_RECORD TABLE
+```sql
+-- MEDICAL_RECORD table
+CREATE TABLE Medical_Record (
+    record_id NUMBER PRIMARY KEY,
+    patient_id NUMBER REFERENCES Patient(patient_id),
+    doctor_id NUMBER REFERENCES Doctor(doctor_id),
+    diagnosis CLOB,
+    lab_results CLOB,
+    treatment_plan CLOB,
+    record_date DATE DEFAULT SYSDATE
+);
+```
+## **📥DATA INSERTION IN MEDICAL_RECORD TABLE**
+
+```sql
+-- Insert Medical Records
+INSERT INTO Medical_Record VALUES (401, 101, 201, 'Hypertension', 'BP: 150/90', 'Lifestyle changes and medication', SYSDATE);
+INSERT INTO Medical_Record VALUES (402, 102, 202, 'Fever and cough', 'Normal CBC', 'Paracetamol and rest', SYSDATE);
+```
+## **🎞TABLE MEDICAL_RECORD SCREENSHOT**
+
+**![Medical record Table](https://github.com/user-attachments/assets/a738a47e-b26b-46c6-9380-8afcafef1d0c)**
+
+## QUERY TO CREATE PRESCRIPTION TABLE
+
+```sql
+-- PRESCRIPTION table
+CREATE TABLE Prescription (
+    prescription_id NUMBER PRIMARY KEY,
+    record_id NUMBER REFERENCES Medical_Record(record_id),
+    medication_name VARCHAR2(100),
+    dosage VARCHAR2(50),
+    instructions CLOB
+);
+```
+
+## **📥 DATA INSERTION IN PRESCRIPTION TABLE**
+
+```sql
+-- Insert Prescriptions
+INSERT INTO Prescription VALUES (501, 401, 'Lisinopril', '10mg', 'Once daily');
+INSERT INTO Prescription VALUES (502, 402, 'Paracetamol', '500mg', 'Three times a day after meals');
+```
+
+## **🎞TABLE  PRESCRIPTION SCREENSHOT**
+
+**![Prescription Table](https://github.com/user-attachments/assets/09b44036-07a1-45de-90aa-3fe123012afa)**
+
+
+## QUERY TO CREATE BILLING TABLE
+
+```sql
+-- BILLING table
+CREATE TABLE Billing (
+    billing_id NUMBER PRIMARY KEY,
+    patient_id NUMBER REFERENCES Patient(patient_id),
+    appointment_id NUMBER REFERENCES Appointment(appointment_id),
+    amount NUMBER(10, 2),
+    status VARCHAR2(20) CHECK (status IN ('Paid', 'Pending', 'Insurance')),
+    payment_date DATE
+);
+```
+
+## **📥 DATA INSERTION IN BILLING TABLE**
+
+```sql
+-- Insert Billing
+INSERT INTO Billing VALUES (601, 101, 301, 25000.00, 'Pending', NULL);
+INSERT INTO Billing VALUES (602, 102, 302, 15000.00, 'Paid', TO_DATE('2025-05-12', 'YYYY-MM-DD'));
+```
+## **🎞TABLE  BILLING SCREENSHOT**
+
+**![Billing Table](https://github.com/user-attachments/assets/fd413182-e095-4c51-a15d-83b3fdb633d8)**
+
+## **2. 📥 Data Insertion**
+
+**.** Realistic and meaningful sample data was inserted to simulate hospital operations.
 
 This data covers typical scenarios such as:
 
-Booking patient appointments
+**✔** Booking patient appointments
 
-Storing medical records and prescriptions
+**✔** Storing medical records and prescriptions
 
-Processing billing transactions
+**✔** Processing billing transactions
 
-Associating doctors with departments
+**✔** Associating doctors with departments
 
-## 3. 🔐 Data Integrity
+## **3. 🔐 Data Integrity**
 To ensure high data quality and operational support:
 
-Primary Keys: Defined on all major entities (e.g., patient_id, doctor_id, appointment_id)
+**Primary Keys:** Defined on all major entities (e.g., patient_id, doctor_id, appointment_id)
 
-Foreign Keys: Ensure referential integrity between related tables (e.g., appointment → patient, prescription → medical_record)
+**Foreign Keys:** Ensure referential integrity between related tables (e.g., appointment → patient, prescription → medical_record)
 
-## Constraints:
+## **Constraints:**
 
-**NOT NUL** on mandatory fields (e.g., full_name, date_of_birth)
+**.** **NOT NUL** on mandatory fields (e.g., full_name, date_of_birth)
 
-**UNIQUE** on fields like department name
+**.** **UNIQUE** on fields like department name
 
-**CHECK** constraints on status fields to restrict allowed values:
+**.** **CHECK** constraints on status fields to restrict allowed values:
 
 ```sql
 CHECK (status IN ('Scheduled', 'Completed', 'Cancelled'))
 ```
 
 ## 4. 🏗️ Physical Database Structure
+
+## 🔹 a. Creating Tables with Appropriate Columns and Data Types
+
+### 📊 Entity Table Overview
+
+| **Entity**        | **Columns & Data Types (Examples)**                                                        |
+|-------------------|--------------------------------------------------------------------------------------------|
+| **Patient**       | `patient_id NUMBER`, `full_name VARCHAR2(100)`, `date_of_birth DATE`                       |
+| **Doctor**        | `doctor_id NUMBER`, `specialty VARCHAR2(50)`, `availability VARCHAR2(50)`                  |
+| **Appointment**   | `appointment_id NUMBER`, `appointment_date DATE`, `status VARCHAR2(20)`                    |
+| **Billing**       | `amount NUMBER(10,2)`, `status VARCHAR2(20)`, `payment_date DATE`                          |
+| **Medical_Record**| `CLOB` for long text fields such as `diagnosis`, `lab_results`, `treatments`, `notes`,..|
+
+
+
+## **🔹 b. Defining Primary Keys and Foreign Keys**
+
+All tables include primary keys and necessary foreign key constraints:
+
+## **Primary Keys:**
+
+**.** Patient(patient_id)
+
+**.** Doctor(doctor_id)
+
+**.** Appointment(appointment_id)
+
+**.** Medical_Record(record_id)
+
+**.** Prescription(prescription_id)
+
+**.** Billing(billing_id)
+
+**.** Department(department_id)
+
+## **Foreign Keys:**
+
+**✔** Appointment.patient_id → Patient.patient_id
+
+**✔** Appointment.doctor_id → Doctor.doctor_id
+
+**✔** Medical_Record.patient_id → Patient.patient_id
+
+**✔** Medical_Record.doctor_id → Doctor.doctor_id
+
+**✔** Prescription.record_id → Medical_Record.record_id
+
+**✔** Billing.patient_id → Patient.patient_id
+
+**✔** Billing.appointment_id → Appointment.appointment_id
 
 The following physical structure was implemented:
 
@@ -311,6 +537,34 @@ The following physical structure was implemented:
 ✅ Indexes for efficient querying (recommended on foreign keys)
 
 ✅ Constraints to enforce data rules
+
+## **🔹 c. Creating Indexes (where necessary)**
+While Oracle automatically creates indexes on primary keys, if needed for performance, we can add indexes on foreign key columns manually:
+
+```sql
+
+CREATE INDEX idx_appointment_patient ON Appointment(patient_id);
+CREATE INDEX idx_appointment_doctor ON Appointment(doctor_id);
+CREATE INDEX idx_billing_appointment ON Billing(appointment_id);
+```
+
+## SCREENSHOT(INDEX CREATION)
+
+![INDEX CREATION](https://github.com/user-attachments/assets/cf0b9c60-53c0-4b67-ae49-3841e41b3da7)
+
+## 🔹 d. Setting Constraints (NOT NULL, UNIQUE, CHECK)
+
+**.** **NOT NULL:** Used for essential fields like full_name, date_of_birth, appointment_date.
+
+**.** **UNIQUE:** Enforced on Department.name to prevent duplicates.
+
+**.** **CHECK:**  Used for validation of column values:
+
+```sql
+
+CHECK (status IN ('Scheduled', 'Completed', 'Cancelled'))  -- For Appointment
+CHECK (status IN ('Paid', 'Pending', 'Insurance'))          -- For Billing
+```
 
 ## Testing & Verification
 
@@ -333,7 +587,8 @@ Medical records and prescriptions are accurately stored and related
 This phase is about executing meaningful interactions with the database using PL/SQL procedures, functions, packages, DML/DDL commands, cursors, 
 and exception handling.
 
-## 1. 🔧 Database Operations (DML and DDL)
+## 🛠️ 1. Database Operations (DML and DDL)
+
 ✅ Example DDL Operations:
 
 ```sql
@@ -364,7 +619,8 @@ DELETE FROM Prescription WHERE prescription_id = 5;
 ## 2. 📌 Task Requirements
 
 ## 🧩 Define a Simple Problem Statement:
-"We want to analyze how many appointments each doctor has completed in a given time period and rank them using window functions."
+
+**>** "We want to analyze how many appointments each doctor has completed in a given time period and rank them using window functions."
 
 This is useful for department heads to evaluate doctor performance.
 
@@ -504,7 +760,7 @@ This phase focuses on improving the functionality, automation, and security of t
 
 ## **📝 Problem Statement**
 
-Hospitals handle highly sensitive and time-critical data. To ensure accountability, prevent unauthorized manipulation, and enforce business rules, the system needs:
+**>** Hospitals handle highly sensitive and time-critical data. To ensure accountability, prevent unauthorized manipulation, and enforce business rules, the system needs:
 
 Automatic restrictions on when and how data can be modified.
 
@@ -528,7 +784,7 @@ Reference Holiday Table created to store holiday dates for the upcoming month.
 
 ## ✅ 2. Trigger Implementation
 
-📂 holiday_dates Table
+### 📂 holiday_dates Table
 
 ```sql
 
@@ -536,13 +792,16 @@ CREATE TABLE holiday_dates (
     holiday_date DATE PRIMARY KEY,
     description VARCHAR2(100)
 );
-🗓 Sample Holiday Entries
 ```
+
+### 🗓 Sample Holiday Entries
+
 ```sql
 
 INSERT INTO holiday_dates VALUES (TO_DATE('2025-06-01', 'YYYY-MM-DD'), 'National Heroes Day');
 INSERT INTO holiday_dates VALUES (TO_DATE('2025-06-15', 'YYYY-MM-DD'), 'Medical Staff Appreciation Day');
 ```
+
 ## 🔁 Restriction Trigger on patients Table
 
 ```sql
@@ -585,6 +844,7 @@ CREATE TABLE audit_log (
     status VARCHAR2(10)
 );
 ```
+
 
 ## ✅ 4. PL/SQL Function for Audit Logging
 
