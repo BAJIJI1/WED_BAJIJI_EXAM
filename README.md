@@ -242,5 +242,253 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 
 
 
+# **🏥 Patient Management System -📦 Phase 5: Table Implementation and Data Insertion – Patient Management System**
+📘 Phase Overview
+This phase focuses on translating the logical data model into a physical Oracle database implementation. It ensures the reliability, accuracy, and structural integrity of data to support all operations and queries defined in the system’s objectives.
+
+# **✅ Tasks and Deliverables**
+## 1. 🧱 Table Creation
+The logical design has been implemented by creating all necessary tables in Oracle SQL.
+
+Tables align with the system's core entities such as:
+
+Patient
+
+Doctor
+
+Appointment
+
+Medical_Record
+
+Prescription
+
+Billing
+
+Department
+
+Each table is structured with appropriate column names and data types (e.g., VARCHAR2, NUMBER, DATE, CLOB).
+
+## 2. 📥 Data Insertion
+Realistic and meaningful sample data was inserted to simulate hospital operations.
+
+This data covers typical scenarios such as:
+
+Booking patient appointments
+
+Storing medical records and prescriptions
+
+Processing billing transactions
+
+Associating doctors with departments
+
+## 3. 🔐 Data Integrity
+To ensure high data quality and operational support:
+
+Primary Keys: Defined on all major entities (e.g., patient_id, doctor_id, appointment_id)
+
+Foreign Keys: Ensure referential integrity between related tables (e.g., appointment → patient, prescription → medical_record)
+
+## Constraints:
+
+**NOT NUL** on mandatory fields (e.g., full_name, date_of_birth)
+
+**UNIQUE** on fields like department name
+
+**CHECK** constraints on status fields to restrict allowed values:
+
+```sql
+CHECK (status IN ('Scheduled', 'Completed', 'Cancelled'))
+```
+
+## 4. 🏗️ Physical Database Structure
+
+The following physical structure was implemented:
+
+✅ Tables with precise column definitions and relationships
+
+✅ Primary key and foreign key constraints
+
+✅ Indexes for efficient querying (recommended on foreign keys)
+
+✅ Constraints to enforce data rules
+
+## Testing & Verification
+
+The inserted data was verified using basic SELECT queries and join operations to ensure:
+
+Appointments are correctly linked to patients and doctors
+
+Billing entries reflect actual appointments
+
+Medical records and prescriptions are accurately stored and related
+
+
+
+
+
+# ✅ PHASE VI: Database Interaction and Transactions – Implementation Guide
+This phase is about executing meaningful interactions with the database using PL/SQL procedures, functions, packages, DML/DDL commands, cursors, and exception handling.
+
+## 1. 🔧 Database Operations (DML and DDL)
+✅ Example DDL Operations:
+
+```sql
+
+-- Altering a table to add a new column
+
+ALTER TABLE Patient ADD emergency_contact VARCHAR2(20);
+
+-- Dropping an unused column
+
+ALTER TABLE Appointment DROP COLUMN comments;
+```
+
+✅ Example DML Operations:
+
+```sql
+
+-- Insert
+INSERT INTO Department (department_id, name) VALUES (1, 'Cardiology');
+
+-- Update
+UPDATE Patient SET phone = '0788888888' WHERE patient_id = 101;
+
+-- Delete
+DELETE FROM Prescription WHERE prescription_id = 5;
+```
+
+## 2. 📌 Task Requirements
+
+## 🧩 Define a Simple Problem Statement:
+"We want to analyze how many appointments each doctor has completed in a given time period and rank them using window functions."
+
+This is useful for department heads to evaluate doctor performance.
+
+## 👇 Grouping Opportunities:
+We will group by doctor and use RANK() or DENSE_RANK() on the number of appointments completed.
+
+## 3. ⚙️ Procedures and Functions
+✅ Procedure: Fetch Appointments By Doctor (With Cursors)
+```sql
+CREATE OR REPLACE PROCEDURE get_doctor_appointments (
+    p_doctor_id IN NUMBER
+) IS
+    CURSOR appt_cursor IS
+        SELECT a.appointment_id, a.appointment_date, a.status
+        FROM Appointment a
+        WHERE a.doctor_id = p_doctor_id;
+    
+    appt_record appt_cursor%ROWTYPE;
+BEGIN
+    OPEN appt_cursor;
+    LOOP
+        FETCH appt_cursor INTO appt_record;
+        EXIT WHEN appt_cursor%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE('Appointment: ' || appt_record.appointment_id || 
+                             ', Date: ' || appt_record.appointment_date || 
+                             ', Status: ' || appt_record.status);
+    END LOOP;
+    CLOSE appt_cursor;
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+END;
+```
+## ✅ Function: Count Appointments per Patient
+
+```sql
+
+CREATE OR REPLACE FUNCTION count_appointments (
+    p_patient_id IN NUMBER
+) RETURN NUMBER IS
+    v_count NUMBER;
+BEGIN
+    SELECT COUNT(*) INTO v_count
+    FROM Appointment
+    WHERE patient_id = p_patient_id;
+    RETURN v_count;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN 0;
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+        RETURN -1;
+END;
+```
+
+## 4. 📦 Apply Packages
+
+## ✅ Package Specification:
+```sql
+
+CREATE OR REPLACE PACKAGE hospital_pkg IS
+    PROCEDURE get_doctor_appointments(p_doctor_id IN NUMBER);
+    FUNCTION count_appointments(p_patient_id IN NUMBER) RETURN NUMBER;
+END hospital_pkg;
+
+```
+## ✅ Package Body:
+
+```sql
+
+CREATE OR REPLACE PACKAGE BODY hospital_pkg IS
+
+    PROCEDURE get_doctor_appointments(p_doctor_id IN NUMBER) IS
+        CURSOR appt_cursor IS
+            SELECT appointment_id, appointment_date, status
+            FROM Appointment
+            WHERE doctor_id = p_doctor_id;
+
+        appt_record appt_cursor%ROWTYPE;
+    BEGIN
+        OPEN appt_cursor;
+        LOOP
+            FETCH appt_cursor INTO appt_record;
+            EXIT WHEN appt_cursor%NOTFOUND;
+            DBMS_OUTPUT.PUT_LINE('Appointment: ' || appt_record.appointment_id || 
+                                 ', Date: ' || appt_record.appointment_date || 
+                                 ', Status: ' || appt_record.status);
+        END LOOP;
+        CLOSE appt_cursor;
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+    END;
+
+    FUNCTION count_appointments(p_patient_id IN NUMBER) RETURN NUMBER IS
+        v_count NUMBER;
+    BEGIN
+        SELECT COUNT(*) INTO v_count
+        FROM Appointment
+        WHERE patient_id = p_patient_id;
+        RETURN v_count;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RETURN 0;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+            RETURN -1;
+    END;
+
+END hospital_pkg;
+```
+
+## 5. 🧪 Testing Examples
+```sql
+-- Test the procedure
+BEGIN
+    hospital_pkg.get_doctor_appointments(2);
+END;
+/
+
+-- Test the function
+DECLARE
+    total_appointments NUMBER;
+BEGIN
+    total_appointments := hospital_pkg.count_appointments(101);
+    DBMS_OUTPUT.PUT_LINE('Total: ' || total_appointments);
+END;
+/
+```
 
 
