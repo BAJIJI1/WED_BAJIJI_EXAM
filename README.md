@@ -263,7 +263,7 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 
 # 1. 🧱 TABLE CREATION 
 
-## QUERY TO CREATE  PATIENT TABLE
+## **🧰 QUERY TO CREATE  PATIENT TABLE**
 
 ```sql
 -- PATIENT table
@@ -286,7 +286,7 @@ INSERT INTO Patient VALUES (102, 'John Bizimana', TO_DATE('1985-11-12', 'YYYY-MM
 
 **![Patient Table](https://github.com/user-attachments/assets/b3f39c86-838e-48a9-b50f-f0ae51dc5701)**
 
-## QUERY TO CREATE  DOCTOR TABLE
+## **🧰QUERY TO CREATE  DOCTOR TABLE**
 
 ```sql
 -- DOCTOR table
@@ -310,7 +310,7 @@ INSERT INTO Doctor VALUES (202, 'Dr. Grace Uwase', 'Pediatrics', '0788456123', '
 
 **![Doctor Table](https://github.com/user-attachments/assets/b5916f8d-0a59-4d03-9566-cfa9ac90e53a)**
 
-## QUERY TO CREATE DEPARTMENT TABLE
+## **🧰QUERY TO CREATE DEPARTMENT TABLE**
 
 ```sql
 -- DEPARTMENT table
@@ -333,7 +333,7 @@ INSERT INTO Department VALUES (2, 'Pediatrics');
 **![Appointment Table](https://github.com/user-attachments/assets/a8c010c8-e0a4-414c-b665-3ce4f3fededf)**
 
 
-## QUERY TO CREATE DEPARTMENT TABLE
+## **🧰QUERY TO CREATE DEPARTMENT TABLE**
 
 ```sql
 -- APPOINTMENT table
@@ -368,7 +368,7 @@ CREATE TABLE Appointment (
     status VARCHAR2(20) CHECK (status IN ('Scheduled', 'Completed', 'Cancelled'))
 );
 ```
-## QUERY TO CREATE  MEDICAL_RECORD TABLE
+## **🧰QUERY TO CREATE  MEDICAL_RECORD TABLE**
 ```sql
 -- MEDICAL_RECORD table
 CREATE TABLE Medical_Record (
@@ -392,7 +392,7 @@ INSERT INTO Medical_Record VALUES (402, 102, 202, 'Fever and cough', 'Normal CBC
 
 **![Medical record Table](https://github.com/user-attachments/assets/a738a47e-b26b-46c6-9380-8afcafef1d0c)**
 
-## QUERY TO CREATE PRESCRIPTION TABLE
+## **🧰QUERY TO CREATE PRESCRIPTION TABLE**
 
 ```sql
 -- PRESCRIPTION table
@@ -418,7 +418,7 @@ INSERT INTO Prescription VALUES (502, 402, 'Paracetamol', '500mg', 'Three times 
 **![Prescription Table](https://github.com/user-attachments/assets/09b44036-07a1-45de-90aa-3fe123012afa)**
 
 
-## QUERY TO CREATE BILLING TABLE
+## **🧰QUERY TO CREATE BILLING TABLE**
 
 ```sql
 -- BILLING table
