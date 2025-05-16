@@ -1,6 +1,6 @@
 # WED_BAJIJI_EXAM
 
-# Project Title: PATIENT MANAGEMENT SYSTEM
+# 🏥 Project Title: PATIENT MANAGEMENT SYSTEM
 
 ## 📋 MAIN INTRODUCTION
 
@@ -930,7 +930,7 @@ Block employees from performing any data manipulation (INSERT, UPDATE, DELETE) o
 
 ## **📌 Tasks and Deliverables**
 
-## ✅ 1. Restriction Rule (Business Logic)
+## 🎡 1. Restriction Rule (Business Logic)
 Manipulation Restriction:
 
 No INSERT, UPDATE, DELETE on weekdays (Monday to Friday).
@@ -992,7 +992,7 @@ BEGIN
 END;
 ```
 
-## ✅ 3. Auditing System
+## 🗜 3. Auditing System
 
 #### **Auditing & Restrictions:**
 
@@ -1013,7 +1013,7 @@ CREATE TABLE audit_log (
 ```
 
 
-## ✅ 4. PL/SQL Function for Audit Logging
+## 🔩 4. PL/SQL Function for Audit Logging
 
 ```sql
 
@@ -1029,7 +1029,7 @@ BEGIN
 END;
 ```
 
-## ✅ 5. Package for Reusable Audit Logging
+## 🎡 5. Package for Reusable Audit Logging
 
 ## 📦 Package Specification
 
@@ -1073,9 +1073,9 @@ Holiday Validation	Prevents tampering during official holidays
 Audit Logging	Captures all sensitive operations with user traceability
 PL/SQL Package	Promotes modular, reusable audit handling logic
 
-## **✅ Testing Summary**
+## **🧩 Testing Summary**
 
-✅ Functional Highlights
+### **💡 Functional Highlights**
 
 **.** 🔒 Attempted manipulation on a weekday → Blocked with an error via trigger.
 
