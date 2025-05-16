@@ -1,12 +1,62 @@
 # WED_BAJIJI_EXAM
 
-# **🏥 Patient Management System - Phase 2:Business Process Modeling (Related to MIS).**
+# Project Title: PATIENT MANAGEMENT SYSTEM
 
-## Introduction
+## 📋 MAIN INTRODUCTION
+
+The **Patient Management System** is a PL/SQL-driven application designed to enhance healthcare operations by digitizing patient-related processes. It facilitates efficient management of patient records, appointments, billing, and medical histories through a centralized database. By leveraging PL/SQL's robust features, the system ensures data integrity, security, and swift information retrieval, thereby improving the overall quality of patient care and administrative efficiency.
+
+
+# 💼MY PROJECT JOURNEY:
+
+**-** **(Phase 1: 🎯 Problem Statement).** **Identifying Core Challenges** **–** Defining the real-world problems that databases can solve to improve wellness center operations.
+
+**-** **(Phase 2: 🛠 Business Process Modeling).** **Modeling Key Processes** **–** Mapping out crucial workflows, ensuring the system meets the operational needs of wellness centers.
+
+**-** **(Phase 3: 🗂 Logical Model Design).** **Designing Strong Foundations** **–** Structuring our data model to represent entities and relationships for seamless data management.
+
+**-** **(Phase 4: 💾 Database Creation).** **Building the Database** **–** Using PL/SQL skills to create a secure and scalable database that powers the wellness system.
+
+**-** **(Phase 5: 📊 Data Insertion).** **Populating with Meaningful Data** **–** Inserting realistic data to test the functionality and ensure the system works as intended.
+
+**-** **(Phase 6: 🔄 Database Transactions).** **Ensuring Data Integrity** **–** Performing database transactions to maintain consistency, accuracy, and reliability throughout the system.
+
+**-** **(Phase 7: 🔐 Security & Data Privacy (Future Phase)).** **Securing Sensitive Information** **–** Implementing security measures to protect client data and ensure privacy.
+
+# 🏥 Patient Management System - Phase 1: 🎯 Problem Statement
+
+## 📘 Introduction
+
+Hospitals and clinics often struggle with efficiently managing patient information, appointments, and billing. 
+Manual record-keeping leads to data inconsistencies, scheduling conflicts, and delayed billing processes, resulting in   poor patient care and administrative inefficiencies.
+
+## 📠 What This Phase Covers:
+
+This phase identifies the real-world problem our database solution aims to resolve. We focus on how a centralized database system can tackle inefficiencies and challenges within wellness center operations.
+
+## Core Problems Addressed by Databases
+
+**_** **Data Duplication:** Eliminating redundant client information across various systems to maintain data accuracy and consistency.   
+
+**_** **Manual Errors:**  Minimizing human errors in tracking client progress, appointments, and payments through automated processes.    
+
+**_** **Inefficient Data Management:**  Replacing outdated spreadsheet-based systems with a structured database for seamless and efficient data handling.
+
+## 🧰 Objective and the Solution
+
+The goal is to create a database-driven system that streamlines daily operations, enhances data accuracy, and improves the overall client experience by centralizing and automating essential tasks.
+
+# **🏥 Patient Management System - Phase 2: Business Process Modeling (Related to MIS).**
+
+## 📗Introduction
 
 In this phase, I translated our business processes into a structured data model, ensuring data integrity, eliminating redundancy, and supporting real-world scenarios in patient management.
 
 We have the key entities, their attributes, relationships, and the normalization steps taken to achieve an efficient and reliable database design.
+
+## 📠 What This Phase Covers:
+
+This phase focuses on defining and visualizing the core workflows within the wellness center's operations. By aligning these processes with the Management Information Systems (MIS) framework, we ensure that the database system addresses organizational needs effectively.
 
 ## **🎲1. Define the Scope**
 
@@ -28,7 +78,7 @@ This process ensures that patient information (appointments, medical records, di
 
 **•**	Support data-driven decisions in treatment and operations.
 
-### **✅ Expected Outcomes:**
+### **✨ Expected Outcomes:**
 
 **•**	Reduced waiting time.
 
@@ -50,6 +100,7 @@ This process ensures that patient information (appointments, medical records, di
 
 
 ## **🎲3, 4 & 5. UML/BPMN Diagram with Swimlanes**
+
 
 <img width="383" alt="BPMN DIAGRAM" src="https://github.com/user-attachments/assets/280cc679-a0fe-4759-b41f-5773920d828f" />
 
@@ -240,26 +291,120 @@ In this phase, we focused on building a **Logical Data Model** aligned with our 
 
 # **🏥 Patient Management System - Phase 4: Database (Pluggable Database) Creation and Naming.**
 
+### 📠 What This Phase Covers
+This phase focuses on creating a Pluggable Database *(PDB)* and converting the logical model into a physical database structure. It ensures that all tables, relationships, and constraints are implemented to meet project requirements.
+
 ## **📘INTRODUCTION**
 
 **.** This phase focuses on the initial setup of the Oracle PL/SQL environment by creating a dedicated pluggable database tailored to the project. It involves naming the database using a standardized format, assigning administrative privileges, and securing it with proper credentials. To ensure effective oversight, Oracle Enterprise Manager (OEM) is configured to monitor database activities, providing insights into performance and resource usage throughout the development process.
 
-## SCREENSHOT OF CREATING PDB
+### 🗄️Database Creation
+
+The Pluggable Database (PDB) was created using the following naming format:
+
+```sql
+Database Name: tue_bajiji_PatientManagementSystem 
+Username: bajiji
+Password: bajiji
+```
+### **🏁Steps to Executed in Command Prompt**
+
+#### **1. ➡️Create a pluggable Database**
+
+```sql
+CREATE PLUGGABLE DATABASE tues_26596_bajiji_patient_management_db
+   2 ADMIN USER bajiji IDENTIFIED BY bajiji
+   3 FILE_NAME_CONVERT=('C:\ORACLE21\ORADATA\ORCL\PDBseed\','C:\ORACLE21\ORADATA\ORC\tues_26596_bajiji_patient_management_db');
+   
+   Pluggable database created.
+```
+
+#### **2. ➡️Open Newly PDB Created:** 
+
+```sql
+alter pluggable database tues_26596_bajiji_patient_management OPEN;
+pluggable database altered.
+```
+**📍Purpose:** Makes the PDB active and ready for operations.
+
+
+#### **3. ➡️save the newly created PDB.**
+
+```sql
+SQL> alter pluggable database tues_26596_bajiji_patient_management save state;
+
+Pluggable database altered.
+```
+
+**📍Purpose:**  Ensures the PDB remains open after the database restarts.
+
+
+#### 4. ➡️Set the Session Container
+
+```sql
+SQL> alter session set container =tues_26596_bajiji_patient_management_db;
+
+Session altered.
+```
+**📍Purpose:** Switches the session to the newly created PDB for subsequent operations.
+
+### 5. ➡️User Creation and Privilege Assignment
+
+#### Create a Database User
+
+```sql
+SQL> create user bajiji identified by bajiji;
+
+User created.
+```
+**📍Purpose:** Creates a new user, bajiji, with the password bajiji.
+
+#### Grant Basic Privileges
+
+```sql
+ SQL> grant all privileges to bajiji;
+
+Grant succeeded.
+```
+**📍Purpose:** To assigns full privileges for database operations.
+
+  ##  🖼SCREENSHOT OF CREATED PDB
 
 **![PDB CREATION](https://github.com/user-attachments/assets/2ba5db50-411d-42d5-8b2d-329f903d8f17)**
 
-## SCREENSHOT OF OEM CREATION
+### ⚖ Oracle Enterprise Manager (OEM)
+
+The **OEM** interface confirmed:
+
+* Successful creation of the database.
+* Proper implementation of relationships between tables.
+* 
+## 🖼SCREENSHOT OF OEM CREATION
 
 **![OEM CREATION](https://github.com/user-attachments/assets/ad8e476b-1047-4775-ba07-40714581a35d)**
 
+### 🎗Conclusion About this phase 
 
-# **🏥 Patient Management System -📦 Phase 5: Table Implementation and Data Insertion – Patient Management System**
+This phase successfully established the pluggable database and implemented the physical structure, enabling efficient data management for the Health and Fitness Tracking System.
+
+
+# **🏥 Patient Management System -📊 Phase 5: Table Implementation and Data Insertion – Patient Management System**
 
 ## **📘 Phase Overview**
 
 **.** This phase focuses on translating the logical data model into a physical Oracle database implementation. It ensures the reliability, accuracy, and structural integrity of data to support all operations and queries defined in the system’s objectives.
 
-# **✅ Tasks and Deliverables**
+### 📠 What This Phase Covers:
+
+**Table Creation:** Implementing the logical design by creating tables within the Oracle database.
+**Data Insertion:** Adding realistic and meaningful data for testing and demonstration.
+**Data Integrity:** Ensuring data integrity and validating that all data supports necessary queries and operations outlined in the problem statement.
+
+ ### ♻ Logical Design Implementation
+ 
+The logical design was implemented by creating database tables aligned with the previously developed ER diagram. Relationships between entities were maintained using primary and foreign keys.
+
+# **📦 Tasks and Deliverables**
 
 # 1. 🧱 TABLE CREATION 
 
@@ -282,7 +427,7 @@ CREATE TABLE Patient (
 INSERT INTO Patient VALUES (101, 'Alice Mukamana', TO_DATE('1990-05-21', 'YYYY-MM-DD'), '0788123456', 'Allergic to penicillin');
 INSERT INTO Patient VALUES (102, 'John Bizimana', TO_DATE('1985-11-12', 'YYYY-MM-DD'), '0788567890', NULL);
 ```
-## **🎞TABLE PATIENT SCREENSHOT**
+## **🖼TABLE PATIENT SCREENSHOT**
 
 **![Patient Table](https://github.com/user-attachments/assets/b3f39c86-838e-48a9-b50f-f0ae51dc5701)**
 
@@ -306,7 +451,7 @@ CREATE TABLE Doctor (
 INSERT INTO Doctor VALUES (201, 'Dr. Emmanuel Ndayisaba', 'Cardiology', '0788987654', 'Mon-Fri');
 INSERT INTO Doctor VALUES (202, 'Dr. Grace Uwase', 'Pediatrics', '0788456123', 'Tue-Sat');
 ```
-## **🎞TABLE DOCTOR SCREENSHOT**
+## **🖼TABLE DOCTOR SCREENSHOT**
 
 **![Doctor Table](https://github.com/user-attachments/assets/b5916f8d-0a59-4d03-9566-cfa9ac90e53a)**
 
@@ -328,7 +473,7 @@ INSERT INTO Department VALUES (1, 'Cardiology');
 INSERT INTO Department VALUES (2, 'Pediatrics');
 ```
 
-## **🎞TABLE APPOINTMENT SCREENSHOT**
+## **🖼TABLE APPOINTMENT SCREENSHOT**
 
 **![Appointment Table](https://github.com/user-attachments/assets/a8c010c8-e0a4-414c-b665-3ce4f3fededf)**
 
@@ -353,7 +498,7 @@ CREATE TABLE Appointment (
 INSERT INTO Appointment VALUES (301, 101, 201, TO_DATE('2025-05-15', 'YYYY-MM-DD'), '10:00 AM', 'Scheduled');
 INSERT INTO Appointment VALUES (302, 102, 202, TO_DATE('2025-05-16', 'YYYY-MM-DD'), '02:00 PM', 'Completed');
 ```
-## **🎞TABLE APPOINTMENT SCREENSHOT**
+## **🖼TABLE APPOINTMENT SCREENSHOT**
 
 **![Appointment Table](https://github.com/user-attachments/assets/b4b4dc5e-6a1b-4410-8eca-30adc3fc7f6b)**
 
@@ -388,7 +533,7 @@ CREATE TABLE Medical_Record (
 INSERT INTO Medical_Record VALUES (401, 101, 201, 'Hypertension', 'BP: 150/90', 'Lifestyle changes and medication', SYSDATE);
 INSERT INTO Medical_Record VALUES (402, 102, 202, 'Fever and cough', 'Normal CBC', 'Paracetamol and rest', SYSDATE);
 ```
-## **🎞TABLE MEDICAL_RECORD SCREENSHOT**
+## **🖼TABLE MEDICAL_RECORD SCREENSHOT**
 
 **![Medical record Table](https://github.com/user-attachments/assets/a738a47e-b26b-46c6-9380-8afcafef1d0c)**
 
@@ -413,7 +558,7 @@ INSERT INTO Prescription VALUES (501, 401, 'Lisinopril', '10mg', 'Once daily');
 INSERT INTO Prescription VALUES (502, 402, 'Paracetamol', '500mg', 'Three times a day after meals');
 ```
 
-## **🎞TABLE  PRESCRIPTION SCREENSHOT**
+## **🖼TABLE  PRESCRIPTION SCREENSHOT**
 
 **![Prescription Table](https://github.com/user-attachments/assets/09b44036-07a1-45de-90aa-3fe123012afa)**
 
@@ -439,7 +584,7 @@ CREATE TABLE Billing (
 INSERT INTO Billing VALUES (601, 101, 301, 25000.00, 'Pending', NULL);
 INSERT INTO Billing VALUES (602, 102, 302, 15000.00, 'Paid', TO_DATE('2025-05-12', 'YYYY-MM-DD'));
 ```
-## **🎞TABLE  BILLING SCREENSHOT**
+## **🖼TABLE  BILLING SCREENSHOT**
 
 **![Billing Table](https://github.com/user-attachments/assets/fd413182-e095-4c51-a15d-83b3fdb633d8)**
 
@@ -460,17 +605,17 @@ This data covers typical scenarios such as:
 ## **3. 🔐 Data Integrity**
 To ensure high data quality and operational support:
 
-**Primary Keys:** Defined on all major entities (e.g., patient_id, doctor_id, appointment_id)
+**Primary Keys🔑:** Defined on all major entities (e.g., patient_id, doctor_id, appointment_id)
 
-**Foreign Keys:** Ensure referential integrity between related tables (e.g., appointment → patient, prescription → medical_record)
+**Foreign Keys🗝️:** Ensure referential integrity between related tables (e.g., appointment → patient, prescription → medical_record)
 
 ## **Constraints:**
 
-**.** **NOT NUL** on mandatory fields (e.g., full_name, date_of_birth)
+**.** **NOT NUL🚫** on mandatory fields (e.g., full_name, date_of_birth)
 
-**.** **UNIQUE** on fields like department name
+**.** **UNIQUE🔒** on fields like department name
 
-**.** **CHECK** constraints on status fields to restrict allowed values:
+**.** **CHECK✔️** constraints on status fields to restrict allowed values:
 
 ```sql
 CHECK (status IN ('Scheduled', 'Completed', 'Cancelled'))
@@ -478,7 +623,7 @@ CHECK (status IN ('Scheduled', 'Completed', 'Cancelled'))
 
 ## 4. 🏗️ Physical Database Structure
 
-## 🔹 a. Creating Tables with Appropriate Columns and Data Types
+## 🗂️ a. Creating Tables with Appropriate Columns and Data Types
 
 ### 📊 Entity Table Overview
 
@@ -492,11 +637,11 @@ CHECK (status IN ('Scheduled', 'Completed', 'Cancelled'))
 
 
 
-## **🔹 b. Defining Primary Keys and Foreign Keys**
+## **🔑🗝️ b. Defining Primary Keys and Foreign Keys**
 
 All tables include primary keys and necessary foreign key constraints:
 
-## **Primary Keys:**
+## **🔑Primary Keys:**
 
 **.** Patient(patient_id)
 
@@ -512,7 +657,7 @@ All tables include primary keys and necessary foreign key constraints:
 
 **.** Department(department_id)
 
-## **Foreign Keys:**
+## **🗝️Foreign Keys:**
 
 **✔** Appointment.patient_id → Patient.patient_id
 
@@ -530,13 +675,13 @@ All tables include primary keys and necessary foreign key constraints:
 
 The following physical structure was implemented:
 
-✅ Tables with precise column definitions and relationships
+ 📑  Tables with precise column definitions and relationships
 
-✅ Primary key and foreign key constraints
+ 📋  Primary key and foreign key constraints
 
-✅ Indexes for efficient querying (recommended on foreign keys)
+ 📋  Indexes for efficient querying (recommended on foreign keys)
 
-✅ Constraints to enforce data rules
+ 📋  Constraints to enforce data rules
 
 ## **🔹 c. Creating Indexes (where necessary)**
 While Oracle automatically creates indexes on primary keys, if needed for performance, we can add indexes on foreign key columns manually:
@@ -548,7 +693,7 @@ CREATE INDEX idx_appointment_doctor ON Appointment(doctor_id);
 CREATE INDEX idx_billing_appointment ON Billing(appointment_id);
 ```
 
-## SCREENSHOT(INDEX CREATION)
+## 🖼SCREENSHOT(INDEX CREATION)
 
 ![INDEX CREATION](https://github.com/user-attachments/assets/cf0b9c60-53c0-4b67-ae49-3841e41b3da7)
 
@@ -566,7 +711,7 @@ CHECK (status IN ('Scheduled', 'Completed', 'Cancelled'))  -- For Appointment
 CHECK (status IN ('Paid', 'Pending', 'Insurance'))          -- For Billing
 ```
 
-## Testing & Verification
+## **🧠Testing & Verification**
 
 The inserted data was verified using basic SELECT queries and join operations to ensure:
 
@@ -582,14 +727,18 @@ Medical records and prescriptions are accurately stored and related
 
 # **🏥 Patient Management System -📦 Phase 6: Database Interaction and Transactions – Implementation Guide**
 
+## 📠 What This Phase Covers
+
+This phase focuses on performing Database Operations (both **DML and DDL**), utilizing various join types to interact with the database and ensure reliable data management. Additionally, it covers Transaction Management to maintain data consistency and integrity during multi-step operations. This ensures the system remains consistent and accurate when processing multiple transactions.
+
 ## Introduction
 
 This phase is about executing meaningful interactions with the database using PL/SQL procedures, functions, packages, DML/DDL commands, cursors, 
 and exception handling.
 
-## 🛠️ 1. Database Operations (DML and DDL)
+## **🛠️ 1. Database Operations (DML and DDL)**
 
-✅ Example DDL Operations:
+✅ Example **DDL** Operations:
 
 ```sql
 
@@ -602,10 +751,9 @@ ALTER TABLE Patient ADD emergency_contact VARCHAR2(20);
 ALTER TABLE Appointment DROP COLUMN comments;
 ```
 
-✅ Example DML Operations:
+✅ Example **DML** Operations:
 
 ```sql
-
 -- Insert
 INSERT INTO Department (department_id, name) VALUES (1, 'Cardiology');
 
@@ -627,8 +775,10 @@ This is useful for department heads to evaluate doctor performance.
 ## 👇 Grouping Opportunities:
 We will group by doctor and use RANK() or DENSE_RANK() on the number of appointments completed.
 
-## 3. ⚙️ Procedures and Functions
-✅ Procedure: Fetch Appointments By Doctor (With Cursors)
+## **3. ⚙️ Procedures and Functions**
+
+**✅ Procedure:** Fetch Appointments By Doctor (With **Cursors**)
+
 ```sql
 CREATE OR REPLACE PROCEDURE get_doctor_appointments (
     p_doctor_id IN NUMBER
@@ -654,7 +804,7 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
 END;
 ```
-## ✅ Function: Count Appointments per Patient
+## **✅ Function: Count Appointments per Patient**
 
 ```sql
 
@@ -676,9 +826,10 @@ EXCEPTION
 END;
 ```
 
-## 4. 📦 Apply Packages
+## **4. 📦 Apply Packages**
 
-## ✅ Package Specification:
+## **✅ Package Specification:**
+
 ```sql
 
 CREATE OR REPLACE PACKAGE hospital_pkg IS
@@ -687,7 +838,7 @@ CREATE OR REPLACE PACKAGE hospital_pkg IS
 END hospital_pkg;
 
 ```
-## ✅ Package Body:
+## **✅ Package Body:**
 
 ```sql
 
@@ -733,7 +884,8 @@ CREATE OR REPLACE PACKAGE BODY hospital_pkg IS
 END hospital_pkg;
 ```
 
-## 5. 🧪 Testing Examples
+## **5. 🧪 Testing Examples**
+
 ```sql
 -- Test the procedure
 BEGIN
@@ -753,6 +905,11 @@ END;
 
 
 # **🏥 Patient Management System -📘 Phase 7: Advanced Database Programming and Auditing**
+
+
+## **📠 What This Phase Covers**
+
+**.** This phase focuses on enhancing the functionality of the Patient Management System for a Wellness Center by incorporating advanced database programming techniques. The key objectives include the practical application of PL/SQL concepts to solve specific problems in the project, ensuring robust system behavior, and improving security measures through auditing and tracking.
 
 ## **🎯 Objective**
 
@@ -784,6 +941,10 @@ Reference Holiday Table created to store holiday dates for the upcoming month.
 
 ## ✅ 2. Trigger Implementation
 
+#### **Triggers:**
+**.** Automate tasks like validating member age, enforcing unique constraints, or logging actions.
+**.** Maintain data integrity by ensuring rules are followed automatically before or after updates.
+
 ### 📂 holiday_dates Table
 
 ```sql
@@ -803,6 +964,7 @@ INSERT INTO holiday_dates VALUES (TO_DATE('2025-06-15', 'YYYY-MM-DD'), 'Medical 
 ```
 
 ## 🔁 Restriction Trigger on patients Table
+
 
 ```sql
 
@@ -831,6 +993,11 @@ END;
 ```
 
 ## ✅ 3. Auditing System
+
+#### **Auditing & Restrictions:**
+
+**.** Implement tracking for sensitive data changes and user actions, ensuring accountability.
+**.** Restrict access based on roles, adding a layer of security to the system.
 
 ## 🧾 audit_log Table
 
@@ -866,6 +1033,10 @@ END;
 
 ## 📦 Package Specification
 
+**Packages:**
+
+* Organize related operations (e.g., membership registration, renewal) into a cohesive module.
+* Enhance scalability, security, and code clarity by centralizing related procedures.
 ```sql
 CREATE OR REPLACE PACKAGE audit_pkg AS
     PROCEDURE log_action(p_user_id VARCHAR2, p_operation_type VARCHAR2, p_status VARCHAR2);
@@ -930,6 +1101,6 @@ Every sensitive action is tracked and stored in the audit log, ensuring accounta
 **⚙️** Automated Rule Enforcement
 Rules are enforced automatically using robust PL/SQL triggers, functions, and packages.
 
-**✅** Result:
+**🤝 Result:**
 
 Through PL/SQL triggers, functions, and packages, the system is now audit-ready and significantly more secure — aligning with best practices and real-world healthcare deployment standards.
