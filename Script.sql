@@ -4,16 +4,15 @@ CREATE PLUGGABLE DATABASE tues_26596_bajiji_patient_management_db
    2 ADMIN USER bajiji IDENTIFIED BY bajiji
    3 FILE_NAME_CONVERT=('C:\ORACLE21\ORADATA\ORCL\PDBseed\','C:\ORACLE21\ORADATA\ORC\tues_26596_bajiji_patient_management_db');
    
-   Pluggable database created.
-
+   --Pluggable database created.
 
 alter pluggable database tues_26596_bajiji_patient_management OPEN;
-pluggable database altered.
+--pluggable database altered.
 
 
 SQL> alter pluggable database tues_26596_bajiji_patient_management save state;
 
-Pluggable database altered.
+--Pluggable database altered.
 
 
 SQL> alter session set container =tues_26596_bajiji_patient_management_db;
