@@ -286,7 +286,6 @@ END;
 /
 
 
-
 CREATE TABLE holiday_dates (
     holiday_date DATE PRIMARY KEY,
     description VARCHAR2(100)
