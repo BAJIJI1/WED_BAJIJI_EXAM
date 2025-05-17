@@ -7,7 +7,6 @@ CREATE PLUGGABLE DATABASE tues_26596_bajiji_patient_management_db
    Pluggable database created.
 
 
-
 alter pluggable database tues_26596_bajiji_patient_management OPEN;
 pluggable database altered.
 
